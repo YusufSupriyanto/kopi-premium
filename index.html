@@ -4,10 +4,131 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Kopi Organik Premium | Nikmati Rasa Alami</title>
+    <meta name="description" content="Nikmati kopi organik premium: Gayo, Toraja, Kintamani, Flores, dan House Blend. Rasa otentik Nusantara, sehat, dan berkualitas.">
+    <meta name="keywords" content="kopi organik, kopi gayo, kopi toraja, kopi kintamani, kopi nusantara">
+    <meta name="author" content="Kopi Nusantara">
+    <link rel="canonical" href="https://yusufsupriyanto.github.io/kopi-premium" />
+
+    <meta property="og:title" content="Kopi Organik Premium | Nikmati Rasa Alami" />
+    <meta property="og:description" content="Nikmati kopi organik premium Nusantara: Gayo, Toraja, Kintamani, Flores, dan House Blend." />
+    <meta property="og:image" content="https://yusufsupriyanto.github.io/kopi-premium/images/og-image.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yusufsupriyanto.github.io/kopi-premium" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kopi Organik Premium | Nikmati Rasa Alami" />
+    <meta name="twitter:description" content="Nikmati kopi organik premium Nusantara: Gayo, Toraja, Kintamani, Flores, dan House Blend." />
+    <meta name="twitter:image" content="https://yusufsupriyanto.github.io/kopi-premium/images/og-image.jpg" />
+
+
   </head>
   <body>
-    <div id="root"></div>
+
+  <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+   <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@graph": [
+        {
+          "@type": "Product",
+          "name": "Kopi Gayo Light Roast",
+          "image": "https://yusufsupriyanto.github.io/kopi-premium/images/products/kopi-gayo.jpeg",
+          "description": "Single origin Gayo dengan rasa fruity dan acidity segar.",
+          "sku": "KOPI-GAYO-001",
+          "category": "Light Roast",
+          "brand": { "@type": "Brand", "name": "Kopi Nusantara" },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://yusufsupriyanto.github.io/kopi-premium/products/kopi-gayo",
+            "priceCurrency": "IDR",
+            "price": "125000",
+            "availability": "https://schema.org/InStock"
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "Kopi Toraja Medium Roast",
+          "image": "https://yusufsupriyanto.github.io/kopi-premium/images/products/kopi-toraja.jpg",
+          "description": "Rasa seimbang dengan aroma rempah khas Toraja.",
+          "sku": "KOPI-TORAJA-002",
+          "category": "Medium Roast",
+          "brand": { "@type": "Brand", "name": "Kopi Nusantara" },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://yusufsupriyanto.github.io/kopi-premium/products/kopi-toraja",
+            "priceCurrency": "IDR",
+            "price": "120000",
+            "availability": "https://schema.org/InStock"
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "Kopi Flores Dark Roast",
+          "image": "https://yusufsupriyanto.github.io/kopi-premium/images/products/kopi-flores.jpeg",
+          "description": "Bold dan smoky dengan body penuh khas Flores Bajawa.",
+          "sku": "KOPI-FLORES-003",
+          "category": "Dark Roast",
+          "brand": { "@type": "Brand", "name": "Kopi Nusantara" },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://yusufsupriyanto.github.io/kopi-premium/products/kopi-flores",
+            "priceCurrency": "IDR",
+            "price": "115000",
+            "availability": "https://schema.org/InStock"
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "Kopi Kintamani Single Origin",
+          "image": "https://yusufsupriyanto.github.io/kopi-premium/images/products/kopi-kintamani.jpg",
+          "description": "Cita rasa jeruk segar khas Kintamani Bali.",
+          "sku": "KOPI-KINTAMANI-004",
+          "category": "Single Origin Indonesia",
+          "brand": { "@type": "Brand", "name": "Kopi Nusantara" },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://yusufsupriyanto.github.io/kopi-premium/products/kopi-kintamani",
+            "priceCurrency": "IDR",
+            "price": "130000",
+            "availability": "https://schema.org/InStock"
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "Kopi Decaf Premium",
+          "image": "https://yusufsupriyanto.github.io/kopi-premium/images/products/kopi-decaf.jpeg",
+          "description": "Nikmati kopi tanpa kafein, tetap nikmat tanpa gangguan tidur.",
+          "sku": "KOPI-DECAF-005",
+          "category": "Decaf Coffee",
+          "brand": { "@type": "Brand", "name": "Kopi Nusantara" },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://yusufsupriyanto.github.io/kopi-premium/products/kopi-decaf",
+            "priceCurrency": "IDR",
+            "price": "140000",
+            "availability": "https://schema.org/InStock"
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "House Blend Signature",
+          "image": "https://yusufsupriyanto.github.io/kopi-premium/images/products/kopi-blend.jpeg",
+          "description": "Campuran biji kopi Nusantara untuk rasa seimbang dan kompleks.",
+          "sku": "KOPI-HOUSE-006",
+          "category": "House Blend",
+          "brand": { "@type": "Brand", "name": "Kopi Nusantara" },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://yusufsupriyanto.github.io/kopi-premium/products/kopi-blend",
+            "priceCurrency": "IDR",
+            "price": "110000",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      ]
+    }
+  </script>
   </body>
 </html>
