@@ -17,6 +17,8 @@ function Carousel({ images }) {
             <img
                 src={images[current].src}
                 alt={images[current].alt}
+                width={1200}
+                height={500}
                 className="w-full h-full object-cover transition-all duration-700"
                 loading="lazy"
             />
@@ -53,6 +55,8 @@ function Categories({ categories }) {
                     <img
                         src={cat.image}
                         alt={cat.name}
+                        width={400}
+                        height={300}
                         className="w-full h-32 sm:h-36 md:h-40 object-cover"
                     />
                     <div className="p-3 sm:p-4">
@@ -80,6 +84,8 @@ function ProductList({ products }) {
                     <img
                         src={p.image}
                         alt={p.name}
+                        width={400}
+                        height={300}
                         className="w-full h-full object-cover rounded-lg mb-4"
                         loading="lazy"
                     />
