@@ -1,5 +1,8 @@
-// src/App.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
+
+// Lazy load komponen berat
+const Categories = lazy(() => import("./Categories.jsx"));
+const ProductList = lazy(() => import("./ProductList"));
 
 // Komponen Carousel
 function Carousel({ images }) {
@@ -20,7 +23,8 @@ function Carousel({ images }) {
                 width={1200}
                 height={500}
                 className="w-full h-full object-cover transition-all duration-700"
-                loading="lazy"
+                loading={current === 0 ? "eager" : "lazy"}
+                fetchpriority={current === 0 ? "high" : "auto"}
             />
             {/* tombol navigasi */}
             <button
@@ -41,74 +45,11 @@ function Carousel({ images }) {
     );
 }
 
-
-//categories List
-function Categories({ categories }) {
-    return (
-        <div className="flex flex-wrap gap-6 mt-8 justify-center">
-            {categories.map((cat, i) => (
-                <div
-                    key={i}
-                    className="bg-[#2C2C2C] rounded-xl shadow-lg overflow-hidden hover:scale-105 transition
-                     w-[45%] sm:w-[30%] md:w-[22%] lg:w-[22%]"
-                >
-                    <img
-                        src={cat.image}
-                        alt={cat.name}
-                        width={400}
-                        height={300}
-                        className="w-full h-32 sm:h-36 md:h-40 object-cover"
-                    />
-                    <div className="p-3 sm:p-4">
-                        <h4 className="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-[#C5A572]">
-                            {cat.name}
-                        </h4>
-                        <p className="text-gray-300 text-xs sm:text-sm">{cat.description}</p>
-                    </div>
-                </div>
-            ))}
-        </div>
-    );
-}
-
-
-// Komponen Product List
-function ProductList({ products }) {
-    return (
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
-            {products.map((p, idx) => (
-                <div
-                    key={idx}
-                    className="bg-white rounded-2xl shadow hover:shadow-lg transition p-4 flex flex-col"
-                >
-                    <img
-                        src={p.image}
-                        alt={p.name}
-                        width={400}
-                        height={300}
-                        className="w-full h-full object-cover rounded-lg mb-4"
-                        loading="lazy"
-                    />
-                    <h4 className="font-bold text-lg mb-2">{p.name}</h4>
-                    <p className="text-gray-600 flex-grow">{p.desc}</p>
-                    <span className="font-semibold text-green-700 mt-2">{p.price}</span>
-                    <button className="mt-4 bg-[#C5A572] text-[#1B1B1B]  py-2 rounded-xl hover:bg-green-800">
-                        Pesan
-                    </button>
-                </div>
-            ))}
-        </div>
-    );
-}
-
-
-
-
 export default function App() {
     const carouselImages = [
-        { src: "images/carousel/carousel_1.jpg", alt: "Promo Kopi 1" },
-        { src: "images/carousel/carousel_2.jpg", alt: "Promo Kopi 2" },
-        { src: "images/carousel/carousel_3.jpg", alt: "Promo Kopi 3" },
+        { src: "images/carousel/carousel_1.webp", alt: "Promo Kopi 1" },
+        { src: "images/carousel/carousel_2.webp", alt: "Promo Kopi 2" },
+        { src: "images/carousel/carousel_3.webp", alt: "Promo Kopi 3" },
     ];
 
     const products = [
@@ -116,71 +57,71 @@ export default function App() {
             name: "Kopi Gayo Light Roast",
             desc: "Single origin Gayo dengan rasa fruity dan acidity segar.",
             price: "Rp125.000",
-            image: "images/products/kopi-gayo.jpeg",
+            image: "images/products/kopi-gayo.webp",
             category: "Light Roast",
         },
         {
             name: "Kopi Toraja Medium Roast",
             desc: "Rasa seimbang dengan aroma rempah khas Toraja.",
             price: "Rp120.000",
-            image: "images/products/kopi-toraja.jpg",
+            image: "images/products/kopi-toraja.webp",
             category: "Medium Roast",
         },
         {
             name: "Kopi Flores Dark Roast",
             desc: "Bold dan smoky dengan body penuh khas Flores Bajawa.",
             price: "Rp115.000",
-            image: "images/products/kopi-flores.jpeg",
+            image: "images/products/kopi-flores.webp",
             category: "Dark Roast",
         },
         {
             name: "Kopi Kintamani Single Origin",
             desc: "Cita rasa jeruk segar khas Kintamani Bali.",
             price: "Rp130.000",
-            image: "images/products/kopi-kintamani.jpg",
+            image: "images/products/kopi-kintamani.webp",
             category: "Single Origin Indonesia",
         },
         {
             name: "Kopi Decaf Premium",
             desc: "Nikmati kopi tanpa kafein, tetap nikmat tanpa gangguan tidur.",
             price: "Rp140.000",
-            image: "images/products/kopi-decaf.jpeg",
+            image: "images/products/kopi-decaf.webp",
             category: "Decaf Coffee",
         },
         {
             name: "House Blend Signature",
             desc: "Campuran biji kopi Nusantara untuk rasa seimbang dan kompleks.",
             price: "Rp110.000",
-            image: "images/products/kopi-blend.jpeg",
+            image: "images/products/kopi-blend.webp",
             category: "House Blend",
         },
     ];
 
-
     const categories = [
         {
             name: "Light Roast",
-            description: "Rasa fruity, floral, dengan acidity tinggi. Cocok untuk manual brew.",
-            image: "images/categories/light_roast.jpg",
+            description:
+                "Rasa fruity, floral, dengan acidity tinggi. Cocok untuk manual brew.",
+            image: "images/categories/light_roast.webp",
         },
         {
             name: "Medium Roast",
-            description: "Seimbang antara rasa manis, asam, dan pahit. Cocok untuk espresso maupun manual brew.",
-            image: "images/categories/medium_roast.jpg",
+            description:
+                "Seimbang antara rasa manis, asam, dan pahit. Cocok untuk espresso maupun manual brew.",
+            image: "images/categories/medium_roast.webp",
         },
         {
             name: "Dark Roast",
-            description: "Rasa bold, pahit kuat, dan smoky. Cocok untuk espresso strong dan kopi susu.",
-            image: "images/categories/dark_roast.jpg",
+            description:
+                "Rasa bold, pahit kuat, dan smoky. Cocok untuk espresso strong dan kopi susu.",
+            image: "images/categories/dark_roast.webp",
         },
         {
             name: "Single Origin Indonesia",
             description: "Kopi pilihan dari Gayo, Toraja, Kintamani, Flores, hingga Papua.",
-            image: "images/categories/original.jpg",
-        }
+            image: "images/categories/original.webp",
+        },
     ];
-
-
 
     return (
         <div className="min-h-screen bg-white text-gray-900">
@@ -189,9 +130,21 @@ export default function App() {
                 <nav className="container mx-auto flex justify-between items-center">
                     <h1 className="text-xl font-bold">Kopi Organik Premium</h1>
                     <ul className="flex gap-4 text-sm">
-                        <li><a href="#carousel" className="hover:underline">Promo</a></li>
-                        <li><a href="#products" className="hover:underline">Produk</a></li>
-                        <li><a href="#contact" className="hover:underline">Kontak</a></li>
+                        <li>
+                            <a href="#carousel" className="hover:underline">
+                                Promo
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#products" className="hover:underline">
+                                Produk
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#contact" className="hover:underline">
+                                Kontak
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </header>
@@ -204,14 +157,18 @@ export default function App() {
             {/* Category */}
             <div className="max-w-6xl mx-auto text-center">
                 <h3 className="text-2xl font-semibold mb-8">Categories</h3>
-                <Categories categories={categories} />
+                <Suspense fallback={<div className="text-center">Loading...</div>}>
+                    <Categories categories={categories} />
+                </Suspense>
             </div>
 
             {/* Product List */}
             <section id="products" className="bg-gray-50 py-12 px-6">
                 <div className="max-w-6xl mx-auto text-center">
                     <h3 className="text-2xl font-semibold mb-8">Produk Kami</h3>
-                    <ProductList products={products} />
+                    <Suspense fallback={<div className="text-center">Loading...</div>}>
+                        <ProductList products={products} />
+                    </Suspense>
                 </div>
             </section>
 
@@ -219,7 +176,9 @@ export default function App() {
             <section id="contact" className="bg-[#1B1B1B] text-white py-12 px-6">
                 <div className="max-w-3xl mx-auto text-center">
                     <h3 className="text-2xl font-semibold mb-4">Hubungi Kami</h3>
-                    <p className="mb-6">Tertarik mencoba Kopi Organik Premium? Hubungi kami sekarang!</p>
+                    <p className="mb-6">
+                        Tertarik mencoba Kopi Organik Premium? Hubungi kami sekarang!
+                    </p>
                     <a
                         href="/dummy-page"
                         className="bg-white text-green-900 px-6 py-3 rounded-xl shadow hover:bg-gray-100 transition"
