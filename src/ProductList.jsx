@@ -6,7 +6,7 @@ export default function ProductList({ products }) {
             {products.map((product, i) => (
                 <div
                     key={i}
-                    className="bg-white rounded-2xl shadow-md hover:shadow-lg transition overflow-hidden"
+                    className="bg-white rounded-2xl shadow-md hover:shadow-lg transition overflow-hidden flex flex-col"
                 >
                     <img
                         src={product.image}
@@ -16,13 +16,18 @@ export default function ProductList({ products }) {
                         height={200}
                         loading="lazy"
                     />
-                    <div className="p-4 text-left">
-                        <h4 className="text-lg font-semibold">{product.name}</h4>
-                        <p className="text-sm text-gray-600">{product.desc}</p>
-                        <p className="text-green-700 font-bold mt-2">{product.price}</p>
-                        <span className="inline-block mt-2 text-xs bg-gray-100 px-2 py-1 rounded-full">
-              {product.category}
-            </span>
+                    <div className="p-4 text-left flex-1 flex flex-col justify-between">
+                        <div>
+                            <h4 className="text-lg font-semibold">{product.name}</h4>
+                            <p className="text-sm text-gray-600">{product.desc}</p>
+                            <p className="text-green-700 font-bold mt-2">{product.price}</p>
+                            <span className="inline-block mt-2 text-xs bg-gray-100 px-2 py-1 rounded-full">
+                                {product.category}
+                            </span>
+                        </div>
+                        <button className="mt-4 w-full bg-green-700 text-white py-2 rounded-xl shadow hover:bg-green-800 transition">
+                            Beli Sekarang
+                        </button>
                     </div>
                 </div>
             ))}

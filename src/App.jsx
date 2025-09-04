@@ -16,13 +16,13 @@ function Carousel({ images }) {
     }, [images.length]);
 
     return (
-        <div className="relative w-full max-w-9xl h-full mx-auto overflow-hidden rounded-2xl shadow-lg">
+        <div className="relative w-full max-w-9xl h-96 mx-auto overflow-hidden rounded-2xl shadow-lg">
             <img
                 src={images[current].src}
                 alt={images[current].alt}
                 width={1200}
-                height={500}
-                className="w-full h-full object-cover transition-all duration-700"
+                height={300}
+                className="w-full h-96 object-cover transition-all duration-700"
                 loading={current === 0 ? "eager" : "lazy"}
                 fetchpriority={current === 0 ? "high" : "auto"}
             />
@@ -126,13 +126,45 @@ export default function App() {
     return (
         <div className="min-h-screen bg-white text-gray-900">
             {/* Header */}
-            <header className="bg-[#1B1B1B] text-white p-4 sticky top-0 shadow-md">
-                <nav className="container mx-auto flex justify-between items-center">
-                    <h1 className="text-xl font-bold">Kopi Organik Premium</h1>
-                    <ul className="flex gap-4 text-sm">
+            <header className="bg-[#1B1B1B] text-white p-4 sticky top-0 shadow-md z-50">
+                <nav className="container mx-auto flex justify-between items-center gap-4 flex-wrap">
+                    {/* Logo + Judul */}
+                    <div className="flex items-center gap-3">
+                        <img
+                            src="images/logo.webp" // ganti dengan path logo Anda
+                            alt="Kopi Organik Premium Logo"
+                            className="w-10 h-10 object-contain rounded-full"
+                        />
+                        <h1 className="text-xl font-bold">Kopi Organik Premium</h1>
+                    </div>
+
+                    {/* Search Bar */}
+                    <div className="flex-1 max-w-md mx-4">
+                        <form className="flex w-full">
+                            <input
+                                type="text"
+                                placeholder="Cari produk..."
+                                className="flex-1 px-4 py-2 rounded-l-xl text-gray-900 bg-white focus:outline-none"
+                            />
+                            <button
+                                type="submit"
+                                className="bg-green-700 px-4 py-2 rounded-r-xl hover:bg-green-800 transition"
+                            >
+                                Cari
+                            </button>
+                        </form>
+                    </div>
+
+                    {/* Menu Navigasi */}
+                    <ul className="flex gap-4 text-sm flex-wrap">
                         <li>
                             <a href="#carousel" className="hover:underline">
                                 Promo
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#categories" className="hover:underline">
+                                Kategori
                             </a>
                         </li>
                         <li>
@@ -149,18 +181,21 @@ export default function App() {
                 </nav>
             </header>
 
+
             {/* Hero Carousel */}
-            <section id="carousel" className="py-12 px-4">
+            <section id="carousel" className="py-12 px-4 mt-4">
                 <Carousel images={carouselImages} />
             </section>
 
             {/* Category */}
+            <section id="categories" className="bg-gray-50 py-12 px-6">
             <div className="max-w-6xl mx-auto text-center">
-                <h3 className="text-2xl font-semibold mb-8">Categories</h3>
+                <h3 className="text-2xl font-semibold mb-8">Kategori</h3>
                 <Suspense fallback={<div className="text-center">Loading...</div>}>
                     <Categories categories={categories} />
                 </Suspense>
             </div>
+            </section>
 
             {/* Product List */}
             <section id="products" className="bg-gray-50 py-12 px-6">
@@ -171,6 +206,37 @@ export default function App() {
                     </Suspense>
                 </div>
             </section>
+
+
+
+            {/* Tips Section */}
+            <section id="tips" className="bg-yellow-50 py-12 px-6">
+                <div className="max-w-6xl mx-auto text-center">
+                    <h3 className="text-2xl font-semibold mb-8">Tips & Trik Menikmati Kopi</h3>
+                    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+                            <h4 className="text-xl font-semibold mb-2">Cara Menyeduh Kopi Manual</h4>
+                            <p className="text-gray-700 text-sm">
+                                Gunakan air panas 90-95°C dan perbandingan kopi dan air 1:15 untuk hasil optimal.
+                            </p>
+                        </div>
+                        <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+                            <h4 className="text-xl font-semibold mb-2">Simpan Biji Kopi dengan Benar</h4>
+                            <p className="text-gray-700 text-sm">
+                                Simpan di wadah kedap udara dan jauhkan dari cahaya agar aroma tetap terjaga.
+                            </p>
+                        </div>
+                        <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+                            <h4 className="text-xl font-semibold mb-2">Pilih Biji Sesuai Selera</h4>
+                            <p className="text-gray-700 text-sm">
+                                Light roast untuk fruity dan asam, dark roast untuk bold dan smoky.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
 
             {/* Contact */}
             <section id="contact" className="bg-[#1B1B1B] text-white py-12 px-6">
@@ -190,7 +256,7 @@ export default function App() {
 
             {/* Footer */}
             <footer className="bg-[#1B1B1B] text-[#B0B0B0] py-6 text-center text-sm">
-                <p>&copy; 2025 Kopi Nusantara. All rights reserved.</p>
+                <p>&copy; 2025 Kopi Organik Premium. All rights reserved.</p>
             </footer>
         </div>
     );
