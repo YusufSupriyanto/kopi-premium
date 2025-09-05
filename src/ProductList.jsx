@@ -25,9 +25,18 @@ export default function ProductList({ products }) {
                                 {product.category}
                             </span>
                         </div>
-                        <button className="mt-4 w-full bg-green-700 text-white py-2 rounded-xl shadow hover:bg-green-800 transition">
-                            Beli Sekarang
-                        </button>
+
+                        <div className="mt-4 flex gap-2">
+                            {/* Tombol Add to Cart */}
+                            <button className="flex-1 bg-red-600 text-white py-2 rounded-xl shadow hover:bg-red-700 transition">
+                                🛒 Add to Cart
+                            </button>
+
+                            {/* Tombol Beli Sekarang */}
+                            <button className="flex-1 bg-green-700 text-white py-2 rounded-xl shadow hover:bg-green-800 transition">
+                                Beli Sekarang
+                            </button>
+                        </div>
                     </div>
                 </div>
             ))}
